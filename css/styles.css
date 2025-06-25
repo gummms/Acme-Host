@@ -482,6 +482,7 @@ li .span-card {
   font-weight: 500;
   color: #fff;
   border: none;
+  outline: none;
   border-radius: 0.5rem;
   padding: 0.8rem 2rem;
   cursor: pointer;
