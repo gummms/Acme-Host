@@ -23,21 +23,34 @@ p {
 }
 
 /* Navbar */
+.menu-toggle-checkbox {
+  display: none;
+}
+
+.menu-toggle-label {
+  display: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.fas.fa-bars {
+  font-size: 26px;
+  margin: 0;
+}
+
 .navbar-container {
   --navbar-height: 4rem;
-  --logo-vertical-padding: 2rem;
 
   position: sticky;
   top: 0;
-  width: 100%;
+  z-index: 1;
   height: var(--navbar-height);
   background-color: #4b6bb9;
-  padding: 0 15rem;
+  padding: 0 10vw;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 nav {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,29 +58,38 @@ nav {
 }
 
 .logo {
+  --logo-vertical-padding: 2rem;
+
   height: calc(var(--navbar-height) - var(--logo-vertical-padding));
 }
 
-.navbar-items {
+nav ul {
   margin: 0;
-  width: 30%;
+
   display: inline-flex;
   justify-content: space-between;
 }
 
-.navbar-items li {
+nav li {
   display: inline-block;
   text-transform: uppercase;
   font-weight: 500;
 }
 
-.navbar-items a {
+nav a {
   color: #fff;
   text-decoration: none;
+  padding: 0 1rem;
   transition: 0.5s;
 }
 
-.navbar-items a:hover {
+.logo-box {
+  display: flex;
+  padding: 0;
+  width: fit-content;
+}
+
+nav a:hover {
   color: #ccc;
 }
 
@@ -77,51 +99,45 @@ nav {
   border-radius: 0.5rem;
 }
 
-.navbar-items .default-btn:hover {
+.default-btn:hover {
   background-color: #22bb5f;
   color: #fff;
 }
 
 /* Hero Section */
 .main-banner {
-  height: 45vh;
-  margin-bottom: 5rem;
-}
-
-.main-banner-content {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.main-banner-img {
-  height: 100%;
-}
-
-.main-banner-text-box {
-  padding-top: 4rem;
+  background-image: url(/img/mainbanner.png);
+  background-position: top right;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  margin-bottom: 5vh;
+  padding: 0 10vw;
+  height: 22vw;
+  align-content: center;
 }
 
 .main-banner-content-text {
-  width: 60%;
+  width: 45%;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  margin-left: 15rem;
+  align-items: flex-start;
 }
 
-.main-banner-content-text h1 {
-  display: flex;
-  align-items: center;
+.main-banner img {
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
 .main-banner-content-text p {
-  font-family: Poppins;
+  font-family: "Poppins";
   font-size: 30px;
+  width: 100%;
 }
 
 /* Services */
 .services-container {
-  padding: 0 15rem;
+  padding: 0 10vw;
   margin-bottom: 7rem;
 }
 
@@ -172,6 +188,7 @@ nav {
 .services-card li {
   display: flex;
   align-items: center;
+
   gap: 1rem;
   font-size: 18px;
   font-weight: 500;
@@ -189,9 +206,11 @@ nav {
 
 /* Prices and plans */
 .pricing-container {
-  padding: 0 15rem;
+  padding: 0 10vw;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 7rem;
-  text-align: center;
+  align-items: center;
 }
 
 .pricing-container h2 {
@@ -205,21 +224,24 @@ nav {
 }
 
 .plans-container {
-  width: 100%;
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  align-items: flex-end;
-  gap: 2rem;
+  align-items: stretch;
 }
 
 .plan-card {
-  width: 100%;
   background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
   border: 1px solid #ccc;
   border-radius: 1.2rem;
+  width: 23%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.plan-card.recommended {
+  position: relative;
 }
 
 .one {
@@ -231,13 +253,15 @@ nav {
 }
 
 .recommended-bubble {
-  display: flex;
-  align-content: center;
-  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
   background-color: #4b6bb9;
-  border-top-left-radius: calc(1.2rem - 6px);
-  border-top-right-radius: calc(1.2rem - 6px);
-  padding: 0.5rem 0;
+  border-radius: 2rem;
 }
 
 .two .recommended-bubble {
@@ -247,7 +271,7 @@ nav {
 .recommended-bubble p {
   color: #fff;
   font-family: "Poppins";
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -257,10 +281,11 @@ nav {
 }
 
 .plan-card-cta {
-  padding: 2rem 2rem 0 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  height: 100%;
+  padding: 2.5rem 2rem 0 2rem;
+  justify-content: space-between;
 }
 
 .plan-name {
@@ -272,9 +297,9 @@ nav {
 }
 
 .plan-description {
+  height: 2rem;
   margin-bottom: 1rem;
   text-align: left;
-  min-height: 2.5rem;
 }
 
 .subscribe {
@@ -292,8 +317,8 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 2rem 2rem 2rem;
-  padding-top: 2rem;
+  margin: 0 2rem;
+  padding: 2rem 0;
   gap: 1.5rem;
   border-top: 1px solid #ccc;
 }
@@ -316,7 +341,7 @@ li .span-card {
 
 .plan-btn {
   width: 100%;
-  height: auto;
+  text-align: center;
   font-family: "Poppins";
   font-size: 18px;
   font-weight: 500;
@@ -346,7 +371,7 @@ li .span-card {
 
 /* Search Domain */
 .searchdomain-container {
-  padding: 0rem 15rem;
+  padding: 0rem 10vw;
   margin-bottom: 7rem;
 }
 
@@ -380,7 +405,6 @@ li .span-card {
 
 .searchdomain-box input {
   border: none;
-  border-radius: 0.5rem;
 }
 
 .searchdomain-box input[type="text"] {
@@ -405,6 +429,7 @@ li .span-card {
 
 .searchdomain-box input[type="submit"] {
   background-color: #2cc76a;
+  border-radius: 0.5rem;
   padding: 0.8rem 2rem;
   color: #fff;
   font-size: 18px;
@@ -419,7 +444,7 @@ li .span-card {
 
 /* Contact Form */
 .contact-container {
-  padding: 0 15rem;
+  padding: 0 10vw;
   margin-bottom: 8rem;
 }
 
@@ -503,4 +528,519 @@ footer {
 
 footer p {
   color: #fff;
+}
+
+/* Responsiveness */
+@media (max-width: 1635px) {
+  /* Services */
+  .services-container {
+    margin-bottom: 4rem;
+  }
+
+  .services-box {
+    padding: 2.5rem;
+  }
+
+  .services-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .fas {
+    font-size: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .services-container h3 {
+    font-size: 18px;
+    margin-bottom: 1rem;
+  }
+
+  .services-container p {
+    font-size: 16px;
+  }
+
+  /* Prices and plans */
+  .pricing-container {
+    margin-bottom: 4rem;
+  }
+
+  .plan-description {
+    margin-bottom: 1rem;
+  }
+
+  .subscribe {
+    font-size: 16px;
+    margin-bottom: 1rem;
+  }
+
+  .price {
+    font-size: 30px;
+  }
+
+  .plan-card-cta {
+    height: 100%;
+  }
+
+  .plan-card ul {
+    height: 100%;
+    gap: 0.5rem;
+  }
+
+  .plan-card li::before {
+    margin-right: 0.5rem;
+  }
+
+  /* Search Domain */
+  .searchdomain-container {
+    margin-bottom: 4rem;
+  }
+}
+
+@media (max-width: 1328px) {
+  /* Hero section */
+  .main-banner-content-text p {
+    font-size: 24px;
+  }
+
+  /* Prices and plans */
+  .pricing-container h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .recommended-bubble p {
+    font-size: 14px;
+  }
+
+  .plan-card-cta {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+
+  .plan-name {
+    font-size: 18px;
+  }
+
+  .plan-description {
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .subscribe {
+    font-size: 14px;
+  }
+
+  .price {
+    font-size: 30px;
+  }
+
+  .plan-card ul {
+    margin: 0 1.5rem 0 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .plan-card li::before {
+    margin-right: 0.5rem;
+  }
+
+  .plan-btn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1100px) {
+  /* Navbar */
+  nav a {
+    padding: 0 1rem;
+  }
+
+  /* Hero section */
+  .main-banner-content-text {
+    width: 48%;
+  }
+
+  .main-banner-content-text img {
+    padding-top: 1.5rem;
+  }
+
+  .main-banner-content-text p {
+    font-size: 22px;
+  }
+
+  /* Services */
+
+  .services-card {
+    width: 30%;
+    padding: 1.5rem 1rem;
+  }
+
+  .services-card ul {
+    gap: 0.5rem;
+  }
+
+  .fas {
+    font-size: 50px;
+    margin-bottom: 1rem;
+  }
+
+  .services-container h3 {
+    font-size: 16px;
+    margin-bottom: 1rem;
+  }
+
+  .services-card li {
+    gap: 0.5rem;
+    font-size: 16px;
+  }
+
+  .services-container p {
+    font-size: 14px;
+  }
+
+  /* Prices and plans */
+  .pricing-container {
+    margin-bottom: 4rem;
+  }
+
+  .pricing-container h2 {
+    font-size: 28px;
+  }
+
+  .pricing-container > p {
+    font-size: 18px;
+    margin-bottom: 2rem;
+  }
+
+  .plans-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .plan-card {
+    width: 100%;
+  }
+
+  .plan-name {
+    font-size: 24px;
+  }
+
+  .plan-description {
+    height: auto;
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+  }
+
+  .subscribe {
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 35px;
+  }
+
+  .plan-card ul {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .plan-card li:not(:last-child)::after {
+    content: "";
+    padding-right: 0.7rem;
+    border-right: 1px solid #ccc;
+  }
+
+  /* Search Domain */
+  .searchdomain-container h2 {
+    font-size: 28px;
+  }
+
+  .searchdomain-container p {
+    font-size: 18px;
+    margin-bottom: 2rem;
+  }
+
+  .searchdomain-box input[type="text"] {
+    padding: 0.8rem 0;
+    font-size: 16px;
+  }
+
+  .searchdomain-box input[type="text"]::placeholder {
+    font-size: 16px;
+  }
+
+  .searchdomain-box input[type="submit"] {
+    font-size: 16px;
+  }
+
+  /* Contact Form */
+  .contact-container {
+    margin-bottom: 5rem;
+  }
+
+  .contact-container h2 {
+    font-size: 28px;
+  }
+
+  .contact-container p {
+    font-size: 18px;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-box {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .contact-box img {
+    width: 40%;
+  }
+
+  .contact-box input,
+  .contact-box textarea {
+    font-size: 14px;
+    padding: 1rem 1rem;
+  }
+
+  .contact-box textarea {
+    height: 10rem;
+  }
+
+  .contact-container input[type="submit"] {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 770px) {
+  /* Navbar */
+  nav a {
+    font-size: 14px;
+  }
+
+  /* Hero Section */
+  .main-banner-content-text p {
+    font-size: 18px;
+  }
+
+  .main-banner-content-text img {
+    margin-bottom: 1rem;
+  }
+
+  /* Services */
+  .services-box {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .services-card {
+    width: 100%;
+    padding: 1.5rem 2rem;
+  }
+
+  .fas {
+    font-size: 40px;
+    margin-bottom: 0.5rem;
+  }
+
+  .services-container h3 {
+    font-size: 20px;
+  }
+
+  .services-card ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .services-card li {
+    gap: 0.25rem;
+    padding-right: 0.5rem;
+  }
+
+  .services-container p {
+    font-size: 16px;
+  }
+
+  /* Search Domain */
+  .searchdomain-box {
+    padding: 3rem 2rem;
+  }
+
+  .searchdomain-container h2,
+  .searchdomain-container p {
+    text-align: center;
+  }
+
+  .searchdomain-container h2 {
+    text-align: center;
+    font-size: 26px;
+  }
+
+  .searchdomain-box input[type="text"] {
+    font-size: 14px;
+  }
+
+  .searchdomain-box input[type="text"]::placeholder {
+    font-size: 14px;
+  }
+
+  /* Contact Form */
+
+  .contact-container {
+    margin-bottom: 5rem;
+  }
+
+  .contact-box {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+
+  .contact-container h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-box img {
+    width: 80%;
+    align-self: center;
+  }
+
+  .contact-container input[type="submit"] {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  /* Footer */
+  footer p {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 550px) {
+  /* Navbar */
+  nav a {
+    font-size: 14px;
+  }
+
+  .navbar-container {
+    --navbar-height: 3.5rem;
+  }
+
+  .logo {
+    --logo-vertical-padding: 1.5rem;
+  }
+
+  .menu-toggle-label {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    position: absolute;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    background-color: #4b6bb9;
+    border-radius: 0 0 1rem 1rem;
+  }
+
+  .menu-toggle-checkbox:checked ~ ul {
+    max-height: 20rem;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  nav ul li:not(:last-child) {
+    border-bottom: 1px solid #5f7edc;
+  }
+
+  nav ul li:first-child {
+    border-top: 1px solid #5f7edc;
+  }
+
+  nav ul li .default-btn {
+    display: block;
+    width: 90%;
+    margin: 0.5rem auto;
+  }
+
+  /* Hero Section */
+  .main-banner {
+    height: fit-content;
+    margin-bottom: 2rem;
+  }
+
+  .main-banner-content-text {
+    width: fit-content;
+    padding-top: 5rem;
+  }
+
+  .main-banner-content-text p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .main-banner-content-text img {
+    padding-top: 1rem;
+  }
+
+  /* Services */
+  .services-card {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .services-card ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: start;
+  }
+
+  .services-card li {
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: start;
+  }
+
+  /* Plans and Prices */
+  .plan-card ul {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .plan-card li::before {
+    margin-right: 0.8rem;
+  }
+
+  .plan-card li:not(:last-child)::after {
+    display: none;
+  }
+
+  /* Search Domain */
+  .searchdomain-box h2 {
+    font-size: 24px;
+  }
+
+  .searchdomain-box p {
+    font-size: 16px;
+  }
+
+  /* Contact Form */
+  .contact-box img {
+    width: 100%;
+  }
 }
